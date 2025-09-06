@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryContracts", "Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemoryRepositories", "Server\InMemoryRepositories\InMemoryRepositories.csproj", "{C4300B78-726C-4926-93D8-DB9365E202D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Server\Demo\Demo.csproj", "{19DE523F-07F3-479D-82FC-36BB2C4921FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,7 @@ Global
 		{AEB6FDC0-20BA-4DA1-980B-86A364DCC3D5} = {BF679E5C-BD33-4A83-A7BF-28C61C3064B3}
 		{E4311196-E114-40FB-ACC3-490FCF72DD3D} = {BF679E5C-BD33-4A83-A7BF-28C61C3064B3}
 		{C4300B78-726C-4926-93D8-DB9365E202D6} = {BF679E5C-BD33-4A83-A7BF-28C61C3064B3}
+		{19DE523F-07F3-479D-82FC-36BB2C4921FD} = {BF679E5C-BD33-4A83-A7BF-28C61C3064B3}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{AEB6FDC0-20BA-4DA1-980B-86A364DCC3D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -31,5 +34,9 @@ Global
 		{C4300B78-726C-4926-93D8-DB9365E202D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4300B78-726C-4926-93D8-DB9365E202D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4300B78-726C-4926-93D8-DB9365E202D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19DE523F-07F3-479D-82FC-36BB2C4921FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19DE523F-07F3-479D-82FC-36BB2C4921FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19DE523F-07F3-479D-82FC-36BB2C4921FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19DE523F-07F3-479D-82FC-36BB2C4921FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
