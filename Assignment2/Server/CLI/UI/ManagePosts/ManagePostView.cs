@@ -19,14 +19,7 @@ namespace CLI.ManagePosts
         {
             while (true)
             {
-                Console.WriteLine();
-                Console.WriteLine("=== Manage posts ===");
-                Console.WriteLine("1) Create post");
-                Console.WriteLine("2) Posts overview (title, id)");
-                Console.WriteLine("3) View single post (with comments)");
-                Console.WriteLine("4) Add comment to a post");
-                Console.WriteLine("0) Back");
-                Console.Write("> ");
+                PrintOptions();
                 var choice = Console.ReadLine();
 
                 switch (choice)
@@ -51,6 +44,17 @@ namespace CLI.ManagePosts
                         break;
                 }
             }
+        }
+        private static void PrintOptions()
+        {
+            Console.WriteLine();
+            Console.WriteLine("=== Manage posts ===");
+            Console.WriteLine("1) Create post");
+            Console.WriteLine("2) Posts overview (title, id)");
+            Console.WriteLine("3) View single post (with comments)");
+            Console.WriteLine("4) Add comment to a post");
+            Console.WriteLine("0) Back");
+            Console.Write("> "); 
         }
     }
 }

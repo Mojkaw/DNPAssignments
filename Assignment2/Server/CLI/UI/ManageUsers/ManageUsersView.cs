@@ -15,12 +15,7 @@ public sealed class ManageUsersView
    {
       while (true)
       {
-         Console.WriteLine();
-         Console.WriteLine("=== Manage Users ===");
-         Console.WriteLine("1) Create User");
-         Console.WriteLine("2) List Users");
-         Console.WriteLine("0) Back");
-         Console.Write("> ");
+         PrintOptions();
          var choice = Console.ReadLine();
          
          switch (choice)
@@ -38,5 +33,15 @@ public sealed class ManageUsersView
                break;
          }
       }
+   }
+
+   private static void PrintOptions()
+   {
+      Console.WriteLine();
+      Console.WriteLine("=== Manage Users ===");
+      Console.WriteLine("1) Create User");
+      Console.WriteLine("2) List Users");
+      Console.WriteLine("0) Back");
+      Console.Write("> ");
    }
 }

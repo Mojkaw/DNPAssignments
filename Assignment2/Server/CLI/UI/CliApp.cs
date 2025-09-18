@@ -15,22 +15,26 @@ public sealed class CliApp
     {
         this.usersRepository = usersRepository;
         this.commentsRepository = commentRepository;
-        this.postRepository = postRepository;;
-        
+        this.postRepository = postRepository;
+        ;
+
     }
 
     public async Task StartAsync()
     {
+        await StartMainMenu();
+
+        Console.WriteLine("Exiting app...");
+    }
+
+    private async Task StartMainMenu()
+    {
         while (true)
         {
-            Console.WriteLine();
-            Console.WriteLine("Welcome to the CLI app!");
-            Console.WriteLine("1) Manage Users");
-            Console.WriteLine("2) Manage Posts");
-            Console.WriteLine("0) Exit");
-            Console.WriteLine("> ");
-            var choice = Console.ReadLine();
+            PrintMainMenu();
             
+            var choice = Console.ReadLine();
+
             switch (choice)
             {
                 case "1":
@@ -45,6 +49,17 @@ public sealed class CliApp
                     Console.WriteLine("Invalid input");
                     break;
             }
+            
         }
+        
+    }
+    private static void PrintMainMenu()
+    {
+        Console.WriteLine();
+        Console.WriteLine("Welcome to the CLI app!");
+        Console.WriteLine("1) Manage Users");
+        Console.WriteLine("2) Manage Posts");
+        Console.WriteLine("0) Exit");
+        Console.WriteLine("> ");
     }
 }
