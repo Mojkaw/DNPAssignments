@@ -1,7 +1,6 @@
-﻿using CLI.ManagePosts;
+﻿using CLI.UI.ManagePosts;
 using CLI.UI.ManageUsers;
 using RepositoryContracts;
-using CLI.ManagePosts;
 
 namespace CLI.UI;
 

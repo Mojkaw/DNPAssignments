@@ -1,6 +1,6 @@
 ﻿using RepositoryContracts;
 using Entities;
-namespace CLI.ManagePosts;
+namespace CLI.UI.ManagePosts;
 
 public class CreatePostView
 {

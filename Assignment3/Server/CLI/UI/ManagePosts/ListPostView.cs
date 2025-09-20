@@ -1,5 +1,5 @@
 ﻿using RepositoryContracts;
-namespace CLI.ManagePosts;
+namespace CLI.UI.ManagePosts;
 
 public sealed class ListPostView
 {

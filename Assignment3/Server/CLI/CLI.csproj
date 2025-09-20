@@ -5,12 +5,13 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <EnablePreviewFeatures>true</EnablePreviewFeatures>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Demo\Demo.csproj" />
       <ProjectReference Include="..\Entities\Entities.csproj" />
-      <ProjectReference Include="..\InMemoryRepositories\InMemoryRepositories.csproj" />
+      <ProjectReference Include="..\FileRepositories\FileRepositories.csproj" />
       <ProjectReference Include="..\RepositoryContracts\RepositoryContracts.csproj" />
     </ItemGroup>
 

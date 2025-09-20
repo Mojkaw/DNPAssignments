@@ -1,6 +1,6 @@
 ﻿using RepositoryContracts;
 
-namespace CLI.ManagePosts;
+namespace CLI.UI.ManagePosts;
 
 public sealed class SinglePostView
 {
@@ -49,7 +49,7 @@ public sealed class SinglePostView
         
         Console.WriteLine();
         Console.WriteLine($"[{post.Id}] {post.Title}");
-        Console.WriteLine($"by {(user != null ? user.Username : $"#{post.UserId}")}");
+        Console.WriteLine($"by {user.Username}");
         Console.WriteLine(post.Body);
         Console.WriteLine();
 
@@ -74,7 +74,7 @@ public sealed class SinglePostView
                 authorName = $"#{c.UserId}";
             }
             
-            Console.WriteLine($" - {authorName}: {c.Body}");
+            Console.WriteLine($" - [Comment #{c.Id}] {authorName}: {c.Body}");
         }
         await Task.CompletedTask;
     }

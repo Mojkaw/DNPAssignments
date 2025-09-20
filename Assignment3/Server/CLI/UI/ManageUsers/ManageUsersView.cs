@@ -17,7 +17,7 @@ public sealed class ManageUsersView
       {
          PrintOptions();
          var choice = Console.ReadLine();
-         
+
          switch (choice)
          {
             case "1":
@@ -25,6 +25,9 @@ public sealed class ManageUsersView
                break;
             case "2":
                await new ListUsersView(userRepository).ShowAsync();
+               break;
+            case "3":
+               await new DeleteUserView(userRepository).ShowAsync();
                break;
             case "0":
                return;
@@ -41,6 +44,7 @@ public sealed class ManageUsersView
       Console.WriteLine("=== Manage Users ===");
       Console.WriteLine("1) Create User");
       Console.WriteLine("2) List Users");
+      Console.WriteLine("3) Delete User");   
       Console.WriteLine("0) Back");
       Console.Write("> ");
    }

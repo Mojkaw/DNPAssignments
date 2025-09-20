@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemoryRepositories", "Ass
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryContracts", "Assignment3\Server\RepositoryContracts\RepositoryContracts.csproj", "{BA19AEEA-963F-46E1-B651-5BBA07FF5187}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileRepositories", "Assignment3\Server\FileRepositories\FileRepositories.csproj", "{AAB993E4-57A7-4109-A65C-E413D6600BBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -218,6 +220,18 @@ Global
 		{BA19AEEA-963F-46E1-B651-5BBA07FF5187}.Release|x64.Build.0 = Release|Any CPU
 		{BA19AEEA-963F-46E1-B651-5BBA07FF5187}.Release|x86.ActiveCfg = Release|Any CPU
 		{BA19AEEA-963F-46E1-B651-5BBA07FF5187}.Release|x86.Build.0 = Release|Any CPU
+		{AAB993E4-57A7-4109-A65C-E413D6600BBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAB993E4-57A7-4109-A65C-E413D6600BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAB993E4-57A7-4109-A65C-E413D6600BBF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AAB993E4-57A7-4109-A65C-E413D6600BBF}.Debug|x64.Build.0 = Debug|Any CPU
+		{AAB993E4-57A7-4109-A65C-E413D6600BBF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AAB993E4-57A7-4109-A65C-E413D6600BBF}.Debug|x86.Build.0 = Debug|Any CPU
+		{AAB993E4-57A7-4109-A65C-E413D6600BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAB993E4-57A7-4109-A65C-E413D6600BBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAB993E4-57A7-4109-A65C-E413D6600BBF}.Release|x64.ActiveCfg = Release|Any CPU
+		{AAB993E4-57A7-4109-A65C-E413D6600BBF}.Release|x64.Build.0 = Release|Any CPU
+		{AAB993E4-57A7-4109-A65C-E413D6600BBF}.Release|x86.ActiveCfg = Release|Any CPU
+		{AAB993E4-57A7-4109-A65C-E413D6600BBF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -240,5 +254,6 @@ Global
 		{DDE9C91C-4295-4EF2-B959-17F8930BFEE2} = {D817E5CE-B44F-4421-915F-D7B4DF4D6305}
 		{BC8C4E1E-9483-4B67-9447-530678D46B36} = {D817E5CE-B44F-4421-915F-D7B4DF4D6305}
 		{BA19AEEA-963F-46E1-B651-5BBA07FF5187} = {D817E5CE-B44F-4421-915F-D7B4DF4D6305}
+		{AAB993E4-57A7-4109-A65C-E413D6600BBF} = {D817E5CE-B44F-4421-915F-D7B4DF4D6305}
 	EndGlobalSection
 EndGlobal

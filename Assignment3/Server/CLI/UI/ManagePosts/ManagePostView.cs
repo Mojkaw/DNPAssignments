@@ -1,6 +1,6 @@
 ﻿using RepositoryContracts;
 
-namespace CLI.ManagePosts
+namespace CLI.UI.ManagePosts
 {
     public sealed class ManagePostView
     {
@@ -34,8 +34,13 @@ namespace CLI.ManagePosts
                         await new SinglePostView(postRepository, userRepository, commentRepository).ShowAsync();
                         break;
                     case "4":
-                        await new AddCommentView(commentRepository,
-                            userRepository, postRepository).ShowAsync();
+                        await new AddCommentView(commentRepository, userRepository, postRepository).ShowAsync();
+                        break;
+                    case "5": 
+                        await new DeletePostView(postRepository).ShowAsync();
+                        break;
+                    case "6": 
+                        await new DeleteCommentView(commentRepository, userRepository).ShowAsync();
                         break;
                     case "0":
                         return;
@@ -53,8 +58,10 @@ namespace CLI.ManagePosts
             Console.WriteLine("2) Posts overview (title, id)");
             Console.WriteLine("3) View single post (with comments)");
             Console.WriteLine("4) Add comment to a post");
+            Console.WriteLine("5) Delete post");              
+            Console.WriteLine("6) Delete comment");           
             Console.WriteLine("0) Back");
-            Console.Write("> "); 
+            Console.Write("> ");
         }
     }
 }
