@@ -1,0 +1,107 @@
+﻿@page "/posts/{Id:int}"
+@using ApiContracts
+@using BlazorApp.Services
+@inject IPostService Posts
+@inject ICommentService Comments
+
+<h2>Post</h2>
+
+@if (_error is not null)
+{
+    <div class="alert alert-danger">@_error</div>
+}
+else if (_post is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <h3>@_post.Title</h3>
+    <p>@_post.Body</p>
+    <p><i>by User #@_post.UserId</i></p>
+
+    <h4 class="mt-4">Comments</h4>
+    @if (_comments is null)
+    {
+        <p>Loading comments...</p>
+    }
+    else if (_comments.Count == 0)
+    {
+        <p>No comments yet.</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var c in _comments)
+            {
+                <li><b>User #@c.UserId:</b> @c.Body</li>
+            }
+        </ul>
+    }
+
+    <EditForm Model="_newComment" OnValidSubmit="AddCommentAsync">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <InputTextArea class="form-control mb-2" @bind-Value="_newComment.Body" />
+        <button class="btn btn-primary" disabled="@_busy">Add comment</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private PostDto? _post;
+    private IReadOnlyList<CommentDto>? _comments;
+    private string? _error;
+    private bool _busy;
+
+    // initial comment template with userId = 1
+    private CreateCommentDto _newComment = new() { PostId = 0, UserId = 1, Body = "" };
+
+    protected override async Task OnParametersSetAsync()
+    {
+        try
+        {
+            _post = await Posts.GetByIdAsync(Id);
+            if (_post is null)
+            {
+                _error = "Post not found.";
+                return;
+            }
+
+            _comments = await Comments.GetByPostIdAsync(Id);
+
+            // reset comment model with correct post id, hardcoded user id = 1
+            _newComment = new CreateCommentDto
+            {
+                PostId = Id,
+                UserId = 1, // <-- hardcoded per assignment guide
+                Body = ""
+            };
+        }
+        catch (Exception ex)
+        {
+            _error = ex.Message;
+        }
+    }
+
+    private async Task AddCommentAsync()
+    {
+        if (_busy) return;
+        _busy = true;
+        try
+        {
+            await Comments.AddAsync(_newComment);
+            _comments = await Comments.GetByPostIdAsync(Id);
+            _newComment.Body = "";
+        }
+        catch (Exception ex)
+        {
+            _error = ex.Message;
+        }
+        finally
+        {
+            _busy = false;
+        }
+    }
+}

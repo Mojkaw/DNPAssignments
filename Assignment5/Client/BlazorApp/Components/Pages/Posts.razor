@@ -1,0 +1,50 @@
+﻿@page "/"
+@using ApiContracts
+@using BlazorApp.Services
+
+@inject IPostService PostService
+@inject NavigationManager Nav
+
+<h2>Posts</h2>
+
+@if (_error is not null)
+{
+    <div class="alert alert-danger">@_error</div>
+}
+else if (_items is null)
+{
+    <p>Loading...</p>
+}
+else if (_items.Count == 0)
+{
+    <p>No posts yet.</p>
+}
+else
+{
+    <ul>
+        @foreach (var p in _items)
+        {
+            <li>
+                    <a @onclick='() => Nav.NavigateTo($"/posts/{p.Id}")'>@p.Title</a>
+            </li>
+
+        }
+    </ul>
+}
+
+@code {
+    private IReadOnlyList<PostDto>? _items;
+    private string? _error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _items = await PostService.GetAllAsync();
+        }
+        catch (Exception ex)
+        {
+            _error = ex.Message;
+        }
+    }
+}
