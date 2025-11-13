@@ -1,0 +1,54 @@
+﻿@using BlazorApp.Services
+@page "/posts/new"
+@using ApiContracts
+@inject IPostService Posts
+@inject NavigationManager Nav
+
+<h2>New Post</h2>
+
+@if (_error is not null)
+{
+    <div class="alert alert-danger">@_error</div>
+}
+
+<EditForm Model="_model" OnValidSubmit="CreateAsync">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="mb-2">
+        <label>Title</label>
+        <InputText class="form-control" @bind-Value="_model.Title" />
+    </div>
+    <div class="mb-2">
+        <label>Body</label>
+        <InputTextArea class="form-control" @bind-Value="_model.Body" />
+    </div>
+    <button class="btn btn-success" disabled="@_busy">Create</button>
+</EditForm>
+
+@code {
+    private CreatePostDto _model = new() { Title = "", Body = "", UserId = 1 };
+    private string? _error;
+    private bool _busy;
+
+    private async Task CreateAsync()
+    {
+        if (_busy) return;
+        _busy = true;
+        try
+        {
+            // hardcoded per assignment guide
+            _model.UserId = 1;
+
+            var created = await Posts.CreateAsync(_model);
+            Nav.NavigateTo($"/posts/{created.Id}");
+        }
+        catch (Exception ex)
+        {
+            _error = ex.Message;
+        }
+        finally
+        {
+            _busy = false;
+        }
+    }
+}

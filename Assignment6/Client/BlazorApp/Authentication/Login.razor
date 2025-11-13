@@ -1,0 +1,55 @@
+﻿@page "/login"
+
+@using BlazorApp.Auth
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthProvider
+@inject NavigationManager navMgr
+
+<h3>Please login</h3>
+
+<AuthorizeView>
+    <Authorized>
+        <h4>You are already logged in.</h4>
+        <button class="btn btn-secondary" @onclick="GoHome">Go home</button>
+    </Authorized>
+</AuthorizeView>
+
+<div class="mb-3">
+    <label class="form-label">Username:</label>
+    <input class="form-control" @bind="userName" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Password:</label>
+    <input class="form-control" type="password" @bind="password" />
+</div>
+
+@if (!string.IsNullOrEmpty(errorLabel))
+{
+    <div class="alert alert-danger">@errorLabel</div>
+}
+
+<button class="btn btn-primary" @onclick="LoginAsync">
+    Log in
+</button>
+
+@code {
+    private string userName = "";
+    private string password = "";
+    private string errorLabel = "";
+
+    private async Task LoginAsync()
+    {
+        try
+        {
+            await ((SimpleAuthProvider)AuthProvider).Login(userName, password);
+            navMgr.NavigateTo("/");
+        }
+        catch (Exception e)
+        {
+            errorLabel = e.Message;
+        }
+    }
+
+    private void GoHome() => navMgr.NavigateTo("/");
+}
