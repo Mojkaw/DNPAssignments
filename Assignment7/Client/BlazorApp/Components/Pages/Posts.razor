@@ -1,0 +1,68 @@
+﻿@page "/"
+@using ApiContracts
+@using BlazorApp.Services
+@using Microsoft.AspNetCore.Components.Authorization
+@inject IPostService PostService
+@inject NavigationManager Nav
+
+<h2>Posts</h2>
+
+<AuthorizeView>
+    <Authorized>
+        <h4>Hello, @context.User.Identity?.Name</h4>
+        <button class="btn btn-outline-secondary" @onclick="Logout">Logout</button>
+    </Authorized>
+    <NotAuthorized>
+        <p>You are not logged in!</p>
+        <button class="btn btn-primary" @onclick='() => Nav.NavigateTo("login")'>Go to login</button>
+    </NotAuthorized>
+</AuthorizeView>
+
+@if (_error is not null)
+{
+    <div class="alert alert-danger">@_error</div>
+}
+else if (_items is null)
+{
+    <p>Loading...</p>
+}
+else if (_items.Count == 0)
+{
+    <p>No posts yet.</p>
+}
+else
+{
+    <ul>
+        @foreach (var p in _items)
+        {
+            <li>
+                <a @onclick='() => Nav.NavigateTo($"/posts/{p.Id}")'>@p.Title</a>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private IReadOnlyList<PostDto>? _items;
+    private string? _error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _items = await PostService.GetAllAsync();
+        }
+        catch (Exception ex)
+        {
+            _error = ex.Message;
+        }
+    }
+
+    private void Logout()
+    {
+        ((BlazorApp.Auth.SimpleAuthProvider)AuthProvider).Logout();
+        Nav.NavigateTo("/");
+    }
+
+    [Inject] private AuthenticationStateProvider AuthProvider { get; set; } = default!;
+}
